@@ -14,6 +14,7 @@ options = {
     'android': '',
     'web': '',
     'dev': '',
+    'design': '',
     'extras': '',
 }
 
@@ -64,6 +65,10 @@ while options['android'] not in ['y', 'n']:
 while options['ios'] not in ['y', 'n']:
     options['ios'] = raw_input(
         "Do you want to install iOS Tools? (%s)  " % '|'.join(['y', 'n']))
+
+while options['design'] not in ['y', 'n']:
+    options['design'] = raw_input(
+        "Do you want to install Design Tools? (%s)  " % '|'.join(['y', 'n']))
 
 while options['extras'] not in ['y', 'n']:
     options['extras'] = raw_input(
@@ -120,6 +125,10 @@ if options['ios'] == 'y':
     print "We need your password"
     os.system('sudo gem install cocoapods')
 
+# Install Design
+if options['design'] == 'y':
+    print "Installing Design Tools"
+    os.system('brew cask install zeplin')
 
 # Install Extras
 if options['extras'] == 'y':
@@ -129,7 +138,7 @@ if options['extras'] == 'y':
     os.system('brew cask install spectacle')
     os.system('brew cask install slack')
     os.system('brew cask install notion')
-
+    os.system('brew cask install keybase')
 
 # Install ssh
 if options['ssh'] == 'y':
